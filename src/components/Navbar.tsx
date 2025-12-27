@@ -13,10 +13,10 @@ const Navbar: NextPage<Props> = ({}) => {
       </div>
       {/* ICONS AND USERS NOTIFICATION */}
       <div className="flex item-center gap-6 justify-end w-full">
-        <div className="bg-white rounded-full w-7 h-7 flex item-center justify-center cursor-pointer">
+        <div className="bg-white rounded-full w-5 h-5 flex item-center justify-center cursor-pointer">
             <Image src="/message.png" alt="notification" width={20} height={20} />
         </div>
-        <div className="bg-white rounded-full w-7 h-7 flex item-center justify-center cursor-pointer relative">
+        <div className="bg-white rounded-full w-5 h-5 flex item-center justify-center cursor-pointer relative">
             <Image src="/announcement.png" alt="user" width={20} height={20} />
             <div className="absolute -top-3 -right-3 w-5 h-5 flex item-center justify-center bg-purple-500 text-white rounded-full text-xs">1</div>
         </div>
