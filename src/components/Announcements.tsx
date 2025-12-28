@@ -6,14 +6,14 @@ interface Props {}
 
 const Announcements: NextPage<Props> = ({}) => {
   return (
-    <div className="bg-white p-4 rounded-md">
+    <div className="bg-white dark:bg-gray-900 p-4 rounded-md mt-5">
       <div className="flex items-center justify-between">
-        <h1 className="font-semibold text-gray-600 text-lg">Announcements</h1>
-        <span className="text-xs text-gray-500">View All</span>
+        <h1 className="font-semibold text-gray-600 dark:text-gray-300 text-sm">Announcements</h1>
+        <span className="text-xs text-gray-500 dark:text-gray-400">View All</span>
       </div>
       <div className="bg-(--skool-sky-light) rounded-md p-4 mt-2">
         <div className="flex items-center justify-between">
-          <h2 className="font-medium text-white">School Reopening</h2>
+          <h2 className="font-medium text-white text-xs">School Reopening</h2>
           <span className="text-xs text-white rounded-md px-1 py-1">
             Jan 5, 2025
           </span>
@@ -26,7 +26,7 @@ const Announcements: NextPage<Props> = ({}) => {
 
       <div className="bg-(--skool-purple-light) rounded-md p-4 mt-2">
         <div className="flex items-center justify-between">
-          <h2 className="font-medium text-white">School Reopening</h2>
+          <h2 className="font-medium text-white text-xs">School Reopening</h2>
           <span className="text-xs text-white rounded-md px-1 py-1">
             Jan 5, 2025
           </span>
@@ -39,7 +39,7 @@ const Announcements: NextPage<Props> = ({}) => {
 
       <div className="bg-(--skool-yellow-light) rounded-md p-4 mt-2">
         <div className="flex items-center justify-between">
-          <h2 className="font-medium text-white">School Reopening</h2>
+          <h2 className="font-medium text-white text-xs">School Reopening</h2>
           <span className="text-xs text-white rounded-md px-1 py-1">
             Jan 5, 2025
           </span>

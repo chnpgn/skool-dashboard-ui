@@ -81,11 +81,11 @@ interface Props {}
 
 const FinanceChart: NextPage<Props> = ({}) => {
   return (
-    <div className="bg-white rounded-xl w-full h-full p-4">
+    <div className="bg-white dark:bg-gray-900 rounded-xl w-full h-full p-4">
       {/* TITLE */}
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-lg font-bold">Finance</h1>
-        <Image src="/moreDark.png" alt="More" width={20} height={20} />
+        <h1 className="text-sm font-bold text-gray-900 dark:text-white">Finance</h1>
+        <Image src="/more.png" alt="More" width={20} height={20} />
       </div>
       {/* CHART */}
       <ResponsiveContainer width="100%" height="85%">

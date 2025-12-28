@@ -1,4 +1,5 @@
-import { NextPage } from 'next'
+import { role } from "@/lib/data";
+import { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -120,29 +121,31 @@ const menuItems = [
 interface Props {}
 
 const Menu: NextPage<Props> = ({}) => {
-  return(
-    <div className="mt-4 text-sm">
+  return (
+    <div className="mt-2 text-sm">
       {menuItems.map((i) => (
         <div className="flex flex-col gap-2" key={i.title}>
-          <span className="hidden lg:block text-gray-400 font-light my-4">
+          <span className="hidden lg:block text-gray-400 font-bold my-4">
             {i.title}
           </span>
           {i.items.map((item) => {
+            if (item.visible.includes(role)){
               return (
-                <Link
-                  href={item.href}
-                  key={item.label}
-                  className="flex items-center justify-center lg:justify-start gap-4 text-gray-500 py-2 md:px-2 rounded-md hover:bg-lamaSkyLight"
-                >
-                  <Image src={item.icon} alt="" width={20} height={20} />
-                  <span className="hidden lg:block">{item.label}</span>
-                </Link>
-              );
+              <Link
+                href={item.href}
+                key={item.label}
+                className="flex items-center justify-center lg:justify-start gap-4 text-gray-500 py-2 md:px-2 rounded-md hover:bg-(--skool-sky-light) font-semibold"
+              >
+                <Image src={item.icon} alt="" width={20} height={20} />
+                <span className="hidden lg:block">{item.label}</span>
+              </Link>
+            );
+            }
           })}
         </div>
       ))}
     </div>
-  )
-}
+  );
+};
 
-export default Menu
+export default Menu;

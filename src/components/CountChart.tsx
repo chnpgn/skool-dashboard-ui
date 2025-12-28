@@ -41,11 +41,11 @@ interface Props {}
 
 const CountChart: NextPage<Props> = ({}) => {
   return (
-    <div className="bg-white rounded-xl w-full h-full p-4">
+    <div className="bg-white dark:bg-gray-900 rounded-xl w-full h-full p-4">
       {/* TITLE */}
       <div className="flex justify-between items-center mb-4">
-        <h1 className="text-lg font-bold">Students</h1>
-        <Image src="/moreDark.png" alt="More" width={20} height={20} />
+        <h1 className="text-sm font-bold text-gray-900 dark:text-white">Students</h1>
+        <Image src="/more.png" alt="More" width={20} height={20} />
       </div>
       {/* CHART */}
       <div className="w-full h-[75%] relative">
@@ -77,13 +77,13 @@ const CountChart: NextPage<Props> = ({}) => {
       <div className="flex justify-center gap-16">
         <div className="flex flex-col gap-1">
           <div className="w-5 h-5 bg-(--skool-sky) rounded-full" />
-          <h1 className="font-bold">1,356</h1>
-          <h2 className="text-sm text-gray-300">Boys (56%)</h2>
+          <h1 className="font-bold text-sm text-gray-900 dark:text-white">1,356</h1>
+          <h2 className="text-sm text-gray-500 dark:text-gray-400">Boys (56%)</h2>
         </div>
         <div className="flex flex-col gap-1">
           <div className="w-5 h-5 bg-(--skool-yellow) rounded-full" />
-          <h1 className="font-bold">1,056</h1>
-          <h2 className="text-sm text-gray-300">Girls (44%)</h2>
+          <h1 className="font-bold text-sm text-gray-900 dark:text-white">1,056</h1>
+          <h2 className="text-sm text-gray-500 dark:text-gray-400">Girls (44%)</h2>
         </div>
       </div>
     </div>

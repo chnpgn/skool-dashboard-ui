@@ -53,22 +53,31 @@ const EventCalendar: NextPage<Props> = ({}) => {
   const [value, onChange] = useState<Value>(new Date());
 
   return (
-    <div className="bg-white p-4 rounded-md">
+    <div className="bg-white dark:bg-gray-900 p-4 rounded-md">
       <Calendar onChange={onChange} value={value} />
       <div className="flex items-center justify-between">
-        <h3 className="text-lg font-semibold my-4 text-gray-600">Events</h3>
-        <Image src="/moreDark.png" alt="Calendar Icon" width={24} height={24} />
+        <h3 className="text-sm font-semibold my-4 text-gray-600 dark:text-gray-300">
+          Events
+        </h3>
+        <Image src="/more.png" alt="Calendar Icon" width={24} height={24} />
       </div>
       <div className="flex flex-col gap-4">
         {events.map((event) => (
-          <div key={event.id} className="p-2 border-2 border-gray-200 rounded-md border-t-4 odd:border-t-(--skool-sky) even:border-t-(--skool-purple)">
+          <div
+            key={event.id}
+            className="p-2 border-2 border-gray-200 dark:border-gray-700 rounded-md border-t-4 odd:border-t-(--skool-sky) even:border-t-(--skool-purple)"
+          >
             <div className="flex items-center justify-between">
-            <h1 className="font-semibold text-gray-600">{event.title}</h1>
-            <span className="text-xs text-gray-500">
-              {new Date(event.time).toLocaleString()}
-            </span>
+              <h1 className="text-xs font-semibold text-gray-600 dark:text-gray-300">
+                {event.title}
+              </h1>
+              <span className="text-xs text-gray-500 dark:text-gray-400">
+                {new Date(event.time).toLocaleString()}
+              </span>
             </div>
-            <p className="mt-2 text-gray-400 text-sm">{event.description}</p>
+            <p className="mt-2 text-gray-400 dark:text-gray-500 text-xs">
+              {event.description}
+            </p>
           </div>
         ))}
       </div>

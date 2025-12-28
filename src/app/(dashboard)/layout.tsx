@@ -22,7 +22,7 @@ export default function DasboardLayout({
           href="/"
           className="flex items-center justify-center lg:justify-start gap-2"
         >
-          <Image src="/slogo.png" alt="logo" width={32} height={32} />
+          <Image src="/logo.png" alt="logo" width={50} height={50} />
           <span className="hidden lg:block font-bold">Skool Next</span>
         </Link>
         <Menu />
