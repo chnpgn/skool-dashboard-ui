@@ -1,8 +1,5 @@
-import { NextPage } from 'next'
 
-interface Props {}
-
-const HomePage: NextPage<Props> = ({}) => {
+const HomePage = ({}) => {
   return <div>This is the Home Page</div>
 }
 

@@ -1,12 +1,9 @@
 import Announcements from '@/components/Announcements'
 import BigCalendar from '@/components/BigCalendar'
 import EventCalendar from '@/components/EventCalendar'
-import { NextPage } from 'next'
 import 'react-big-calendar/lib/css/react-big-calendar.css'
 
-interface Props {}
-
-const StudentPage: NextPage<Props> = ({}) => {
+const StudentPage = ({}) => {
   return(
     <div className='p-4 flex gap-4 flex-col xl:flex-row'>
       {/* LEFT */}

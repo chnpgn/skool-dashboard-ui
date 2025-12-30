@@ -1,11 +1,9 @@
 "use client";
 
-import { NextPage } from "next";
 import Image from "next/image";
 import {
   RadialBarChart,
   RadialBar,
-  Legend,
   ResponsiveContainer,
 } from "recharts";
 // import { RechartsDevtools } from '@recharts/devtools';
@@ -30,16 +28,7 @@ const data = [
 ];
 
 // #endregion
-const style = {
-  top: "50%",
-  right: 0,
-  transform: "translate(0, -50%)",
-  lineHeight: "24px",
-};
-
-interface Props {}
-
-const CountChart: NextPage<Props> = ({}) => {
+const CountChart = ({}) => {
   return (
     <div className="bg-white dark:bg-gray-900 rounded-xl w-full h-full p-4">
       {/* TITLE */}

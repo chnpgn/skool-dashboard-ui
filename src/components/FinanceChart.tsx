@@ -1,6 +1,5 @@
 "use client";
 
-import { NextPage } from "next";
 import Image from "next/image";
 import {
   LineChart,
@@ -77,9 +76,7 @@ const data = [
   },
 ];
 
-interface Props {}
-
-const FinanceChart: NextPage<Props> = ({}) => {
+const FinanceChart = ({}) => {
   return (
     <div className="bg-white dark:bg-gray-900 rounded-xl w-full h-full p-4">
       {/* TITLE */}

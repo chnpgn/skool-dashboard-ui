@@ -1,6 +1,5 @@
 "use client";
 
-import { NextPage } from "next";
 import { Calendar, momentLocalizer, View, Views } from "react-big-calendar";
 import moment from "moment";
 import { calendarEvents } from "@/lib/data";
@@ -8,9 +7,7 @@ import { useState } from "react";
 
 const localizer = momentLocalizer(moment);
 
-interface Props {}
-
-const BigCalendar: NextPage<Props> = ({}) => {
+const BigCalendar = ({}) => {
   const [view, setView] = useState<View>(Views.WORK_WEEK);
 
   const handleViewChange = (newView: View) => {

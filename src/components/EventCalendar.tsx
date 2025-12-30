@@ -1,12 +1,9 @@
 "use client";
 
-import { NextPage } from "next";
 import { useState } from "react";
 import Image from "next/image";
 import Calendar from "react-calendar";
 import "react-calendar/dist/Calendar.css";
-
-interface Props {}
 
 type ValuePiece = Date | null;
 type Value = ValuePiece | [ValuePiece, ValuePiece];
@@ -49,7 +46,7 @@ const events = [
   },
 ];
 
-const EventCalendar: NextPage<Props> = ({}) => {
+const EventCalendar = ({}) => {
   const [value, onChange] = useState<Value>(new Date());
 
   return (

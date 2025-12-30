@@ -1,10 +1,6 @@
 "use client";
 
-import { NextPage } from "next";
-
-interface Props {}
-
-const Announcements: NextPage<Props> = ({}) => {
+const Announcements = ({}) => {
   return (
     <div className="bg-white dark:bg-gray-900 p-4 rounded-md mt-5">
       <div className="flex items-center justify-between">

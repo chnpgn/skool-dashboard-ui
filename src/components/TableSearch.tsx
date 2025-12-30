@@ -1,9 +1,6 @@
-import { NextPage } from "next";
 import Image from "next/image";
 
-interface Props {}
-
-const TableSearch: NextPage<Props> = ({}) => {
+const TableSearch = ({}) => {
   return (
     <div className="w-full md:w-auto flex items-center gap-2 text-xs rounded-full ring-[1.5px] ring-gray-300 dark:ring-gray-700 px-4 py-2 bg-white dark:bg-gray-900">
       <Image src="/search.png" alt="search" width={14} height={14} />

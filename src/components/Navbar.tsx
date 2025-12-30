@@ -1,9 +1,6 @@
-import { NextPage } from "next";
 import Image from "next/image";
 
-interface Props {}
-
-const Navbar: NextPage<Props> = ({}) => {
+const Navbar = ({}) => {
   return (
     <div className="flex items-center justify-between p-4 bg--white dark:bg-gray-900 shadow-md w-full">
       {/* SEARCH BAR */}

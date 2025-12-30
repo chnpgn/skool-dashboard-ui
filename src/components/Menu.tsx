@@ -1,5 +1,4 @@
 import { role } from "@/lib/data";
-import { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -118,9 +117,7 @@ const menuItems = [
   },
 ];
 
-interface Props {}
-
-const Menu: NextPage<Props> = ({}) => {
+const Menu = ({}) => {
   return (
     <div className="mt-2 text-sm">
       {menuItems.map((i) => (

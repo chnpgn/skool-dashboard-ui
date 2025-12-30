@@ -1,6 +1,5 @@
 "use client";
 
-import { NextPage } from "next";
 import Image from "next/image";
 import {
   BarChart,
@@ -52,9 +51,7 @@ const data = [
   },
 ];
 
-interface Props {}
-
-const AttendanceChart: NextPage<Props> = ({}) => {
+const AttendanceChart = ({}) => {
   return (
     <div className="bg-white dark:bg-gray-900 rounded-lg p-4 h-full">
       <div className="flex justify-between items-center">
