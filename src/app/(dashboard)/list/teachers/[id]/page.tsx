@@ -4,6 +4,7 @@ import BigCalendar from "@/components/BigCalendar";
 import Image from "next/image";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import Link from "next/link";
+import FormModal from "@/components/FormModal";
 
 const SingleTeacherPage = ({}) => {
   return (
@@ -24,7 +25,27 @@ const SingleTeacherPage = ({}) => {
               />
             </div>
             <div className="w-2/3 flex flex-col justify-between gap-4">
-              <h1 className="text-xl font-semibold">Amos Kimunya</h1>
+              <div className="flex items-center gap-4">
+                <h1 className="text-xl font-semibold">Amos Kimunya</h1>
+                <FormModal
+                  table="teacher"
+                  type="update"
+                  data={{
+                    id: 1,
+                    username: "danuroossa",
+                    email: "info@gmail.com",
+                    password: "password",
+                    firstName: "first name",
+                    lastName: "last name",
+                    phone: "+254 454 565",
+                    address: "1234 honolulu, caribean",
+                    bloodType: "A+",
+                    dateOfBirth: "1988-01-01",
+                    sex: "male",
+                    img: "https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=1200",
+                  }}
+                />
+              </div>
               <p className="text-sm text-gray-500">
                 {" "}
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore,
@@ -127,7 +148,9 @@ const SingleTeacherPage = ({}) => {
       {/* RIGHT */}
       <div className="w-full xl:w-1/3 flex flex-col gap-4">
         <div className="bg-white p-4 rounded-md">
-          <h1 className="font-semibold text-gray-600 dark:text-gray-300 text-sm">ShortCuts</h1>
+          <h1 className="font-semibold text-gray-600 dark:text-gray-300 text-sm">
+            ShortCuts
+          </h1>
           <div className="mt-4 flex gap-4 flex-wrap text-xs text-gray-500">
             <Link className="p-3 rounded-md bg-(--skool-sky-light)" href="/">
               {" "}
