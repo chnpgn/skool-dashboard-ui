@@ -20,7 +20,6 @@ const Table = ({ columns, data, renderRow }: Props) => {
           ))}
         </tr>
       </thead>
-
       <tbody>{data.map((row, index) => renderRow(row, index))}</tbody>
     </table>
   );

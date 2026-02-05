@@ -152,23 +152,23 @@ const SingleTeacherPage = ({}) => {
             ShortCuts
           </h1>
           <div className="mt-4 flex gap-4 flex-wrap text-xs text-gray-500">
-            <Link className="p-3 rounded-md bg-(--skool-sky-light)" href="/">
+            <Link className="p-3 rounded-md bg-(--skool-sky-light)" href={`/list/students?teacherId=${"teacher2"}`}>
               {" "}
               Teachers Students
             </Link>
-            <Link className="p-3 rounded-md bg-(--skool-purple-light)" href="/">
+            <Link className="p-3 rounded-md bg-(--skool-purple-light)" href={`/list/lessons?teacherId=${"teacher2"}`}>
               {" "}
               Teachers Lessons
             </Link>
-            <Link className="p-3 rounded-md bg-(--skool-yellow-light)" href="/">
+            <Link className="p-3 rounded-md bg-(--skool-yellow-light)" href={`/list/classes?supervisorId=${"teacher2"}`}>
               {" "}
               Teachers Classes
             </Link>
-            <Link className="p-3 rounded-md bg-pink-50" href="/">
+            <Link className="p-3 rounded-md bg-pink-50" href={`/list/exams?teacherId=${"teacher2"}`}>
               {" "}
               Teachers Exams
             </Link>
-            <Link className="p-3 rounded-md bg-amber-200 " href="/">
+            <Link className="p-3 rounded-md bg-amber-200 " href={`/list/assignments?teacherId=${"teacher2"}`}>
               {" "}
               Teachers Assignments
             </Link>
