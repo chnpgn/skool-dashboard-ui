@@ -1,13 +1,12 @@
 import Pagination from "@/components/Pagination";
 import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
-import { parentsData, role } from "@/lib/data";
 import Image from "next/image";
-import Link from "next/link";
 import FormModal from "@/components/FormModal";
 import { Prisma, Parent, Student } from "@/generated/prisma/client";
 import { prisma } from "@/lib/prisma";
 import { ITEMS_PER_PAGE } from "@/lib/settings";
+import { role } from "@/lib/utils";
 
 type ParentList = Parent & {
   students: Student[];
@@ -33,10 +32,14 @@ const columns = [
     accessor: "address",
     className: "hidden lg:table-cell",
   },
-  {
-    header: "Actions",
-    accessor: "actions",
-  },
+  ...(role === "admin"
+    ? [
+        {
+          header: "Actions",
+          accessor: "actions",
+        },
+      ]
+    : []),
 ];
 
 const renderRow = (item: ParentList) => (

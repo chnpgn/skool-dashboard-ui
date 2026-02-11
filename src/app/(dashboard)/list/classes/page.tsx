@@ -1,12 +1,12 @@
 import Pagination from "@/components/Pagination";
 import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
-import { classesData, role } from "@/lib/data";
 import Image from "next/image";
 import FormModal from "@/components/FormModal";
 import { Prisma, Class, Teacher } from "@/generated/prisma/client";
 import { prisma } from "@/lib/prisma";
 import { ITEMS_PER_PAGE } from "@/lib/settings";
+import { role } from "@/lib/utils";
 
 type ClassList = Class & { supervisor: Teacher };
 
@@ -30,10 +30,14 @@ const columns = [
     accessor: "supervisor",
     className: "hidden md:table-cell",
   },
-  {
-    header: "Actions",
-    accessor: "actions",
-  },
+  ...(role === "admin"
+    ? [
+        {
+          header: "Actions",
+          accessor: "actions",
+        },
+      ]
+    : []),
 ];
 
 const renderRow = (item: ClassList) => (

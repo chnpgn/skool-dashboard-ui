@@ -1,12 +1,13 @@
 import Pagination from "@/components/Pagination";
 import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
-import { assignmentsData, resultsData, role } from "@/lib/data";
 import Image from "next/image";
 import FormModal from "@/components/FormModal";
 import { Class, Prisma, Result, Teacher } from "@/generated/prisma/client";
 import { prisma } from "@/lib/prisma";
 import { ITEMS_PER_PAGE } from "@/lib/settings";
+import { currentUserId, role } from "@/lib/utils";
+import { ca, de } from "zod/locales";
 
 type ResultList = {
   id: number;
@@ -48,10 +49,14 @@ const columns = [
     accessor: "date",
     className: "hidden md:table-cell",
   },
-  {
-    header: "Actions",
-    accessor: "actions",
-  },
+  ...(role === "admin" || role === "teacher"
+    ? [
+        {
+          header: "Actions",
+          accessor: "actions",
+        },
+      ]
+    : []),
 ];
 
 const renderRow = (item: ResultList) => (
@@ -71,7 +76,7 @@ const renderRow = (item: ResultList) => (
     </td>
     <td>
       <div className="flex items-center gap-2">
-        {role === "admin" && (
+        {(role === "admin" || role === "teacher") && (
           <>
             <FormModal table="result" type="update" data={item} />
             <FormModal table="result" type="delete" id={item.id} />
@@ -129,6 +134,31 @@ const ResultListPage = async ({
         }
       }
     }
+  }
+
+  // ROLE CONDITIONS
+  switch (role) {
+    case "admin":
+      // No additional conditions for admin
+      break;
+    case "teacher":
+      query.OR = [
+        {
+          exam: { lesson: { teacherId: currentUserId! } },
+          assignment: { lesson: { teacherId: currentUserId! } },
+        },
+      ];
+      break;
+    case "student":
+      query.studentId = currentUserId!;
+      break;
+    case "parent":
+      query.student = {
+        parentId: currentUserId!,
+      };
+      break;
+    default:
+      break;
   }
 
   const [dataRes, count] = await prisma.$transaction([
@@ -199,7 +229,9 @@ const ResultListPage = async ({
             <button className="w-8 h-8 flex items-center justify-center rounded-full bg-(--skool-yellow)">
               <Image src="/sort.png" alt="filter" width={14} height={14} />
             </button>
-            {role === "admin" && <FormModal table="result" type="create" />}
+            {(role === "admin" || role === "teacher") && (
+              <FormModal table="result" type="create" />
+            )}
           </div>
         </div>
       </div>
