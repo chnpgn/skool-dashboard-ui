@@ -12,52 +12,9 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-// #region Sample data
-const data = [
-  {
-    name: "Mon",
-    present: 70,
-    absent: 30,
-  },
-  {
-    name: "Tue",
-    present: 60,
-    absent: 40,
-  },
-  {
-    name: "Wed",
-    present: 80,
-    absent: 20,
-  },
-  {
-    name: "Thu",
-    present: 75,
-    absent: 25,
-  },
-  {
-    name: "Fri",
-    present: 65,
-    absent: 35,
-  },
-  {
-    name: "Sat",
-    present: 90,
-    absent: 10,
-  },
-  {
-    name: "Sun",
-    present: 85,
-    absent: 15,
-  },
-];
-
-const AttendanceChart = ({}) => {
+const AttendanceChart = ({ data} : { data: { name: string; present: number; absent: number }[]}) => {
   return (
-    <div className="bg-white dark:bg-gray-900 rounded-lg p-4 h-full">
-      <div className="flex justify-between items-center">
-        <h1 className="text-sm font-semibold text-gray-900 dark:text-white">Attendance Chart</h1>
-        <Image src="/more.png" alt="Attendance" width={20} height={20} />
-      </div>
+    
       <ResponsiveContainer width="100%" height="90%">
         <BarChart
           width={500}
@@ -109,7 +66,6 @@ const AttendanceChart = ({}) => {
           />
         </BarChart>
       </ResponsiveContainer>
-    </div>
   );
 };
 
