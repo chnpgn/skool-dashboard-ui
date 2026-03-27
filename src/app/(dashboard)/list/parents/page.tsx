@@ -3,14 +3,16 @@ import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
 import Image from "next/image";
 import FormModal from "@/components/FormModal";
-import { Prisma, Parent, Student } from "@/generated/prisma/client";
+import { Prisma, Parent, Student } from "@/generated/client";
 import { prisma } from "@/lib/prisma";
 import { ITEMS_PER_PAGE } from "@/lib/settings";
-import { role } from "@/lib/utils";
+import { getAuthData } from "@/lib/utils";
 
 type ParentList = Parent & {
   students: Student[];
 };
+
+const { userId, role } = await getAuthData();
 
 const columns = [
   {

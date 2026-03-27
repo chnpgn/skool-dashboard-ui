@@ -3,11 +3,13 @@ import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
 import Image from "next/image";
 import FormModal from "@/components/FormModal";
-import { Prisma, Subject, Teacher } from "@/generated/prisma/client";
+import { Prisma, Subject, Teacher } from "@/generated/client";
 import { prisma } from "@/lib/prisma";
 import { ITEMS_PER_PAGE } from "@/lib/settings";
-import { role } from "@/lib/utils";
 import FormContainer from "@/components/forms/FormContainer";
+import { getAuthData } from "@/lib/utils";
+
+const { userId, role } = await getAuthData(); // ✅ safe
 
 type SubjectList = Subject & {
   teachers: Teacher[];

@@ -9,11 +9,11 @@ export const routeAccessMap: RouteAccessMap = {
   "/student(.*)?": ["student"], // Student routes
   "/teacher(.*)?": ["teacher"], // Teacher routes
   "/parent(.*)?": ["parent"], // Parent routes
-  "/list/teachers": ["admin", "teacher"], // Example of a route accessible to multiple roles
+  "/list/teachers": ["admin"], // Example of a route accessible to multiple roles
   "/list/students": ["admin", "teacher"], // Example of a route accessible to multiple roles
-  "/list/parents": ["admin", "teacher"], // Example of a route accessible to multiple roles
+  "/list/parents": ["admin"], // Example of a route accessible to multiple roles
   "/list/classes": ["admin", "teacher"], // Example of a route accessible to multiple roles
-  "/list/subjects": ["admin"], // Example of a route accessible to multiple roles
+  "/list/subjects": ["admin", "teacher"], // Example of a route accessible to multiple roles
   "/list/exams": ["admin", "teacher", "student", "parent"], // Example of a route accessible to multiple roles
   "/list/assignments": ["admin", "teacher", "student", "parent"], // Example of a route accessible to multiple roles
   "/list/results": ["admin", "teacher", "student", "parent"], // Example of a route accessible to multiple roles

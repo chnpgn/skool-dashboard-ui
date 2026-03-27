@@ -1,8 +1,13 @@
 import { auth } from "@clerk/nextjs/server";
 
-const { userId, sessionClaims } = await auth();
-export const role = (sessionClaims?.metadata as { role?: string })?.role;
-export const currentUserId = userId;
+export async function getAuthData() {
+  const { userId, sessionClaims } = await auth();
+
+  return {
+    userId,
+    role: (sessionClaims?.metadata as { role?: string })?.role,
+  };
+}
 
 const currentWorkWeek = () => {
   const today = new Date();

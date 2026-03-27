@@ -4,7 +4,6 @@ import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import InputField from "../InputField";
-import Image from "next/image";
 import {
   Dispatch,
   SetStateAction,
@@ -111,7 +110,7 @@ const ClassForm = ({
           >
             {teachers?.map(
               (teacher: { id: string; name: string; surname: string }) => (
-                <option key={teacher.id} value={teacher.id}>
+                <option key={teacher.id} value={teacher.id} selected={data?.supervisorId === teacher.id}>
                   {teacher.name} {teacher.surname}
                 </option>
               ),
@@ -131,10 +130,11 @@ const ClassForm = ({
             defaultValue={data?.gradeId}
           >
             {grades?.map((grade: { id: number; level: number }) => (
-              <option key={grade.id} value={grade.id}>
-                {grade.level}
+              <option key={grade.id} value={grade.id} selected={data?.gradeId === grade.id}>
+                {grade.level}th Grade
               </option>
             ))}
+            {console.log("Grades in form:", grades)}
           </select>
           {errors.gradeId?.message && (
             <p className="text-xs text-red-400">
@@ -143,8 +143,14 @@ const ClassForm = ({
           )}
         </div>
       </div>
-      <button className="bg-blue-400 text-white p-2 rounded-md">
-        {type === "create" ? "Create" : "Update"}
+      {state.error && (
+        <p className="text-red-500">
+          An error occurred while {type === "create" ? "creating" : "updating"}{" "}
+          the class. Please try again.
+        </p>
+      )}
+      <button disabled={isPending} className="bg-blue-400 text-white p-2 rounded-md disabled:opacity-50">
+        {isPending ? "Saving..." : type === "create" ? "Create" : "Update"}
       </button>
     </form>
   );

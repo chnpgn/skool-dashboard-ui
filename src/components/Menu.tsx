@@ -1,4 +1,3 @@
-import { role } from "@/lib/data";
 import { currentUser } from "@clerk/nextjs/server";
 import Image from "next/image";
 import Link from "next/link";
@@ -13,11 +12,13 @@ const menuItems = [
         href: "/",
         visible: ["admin", "teacher", "student", "parent"],
       },
+
+      // ADMIN MANAGEMENT
       {
         icon: "/teacher.png",
         label: "Teachers",
         href: "/list/teachers",
-        visible: ["admin", "teacher"],
+        visible: ["admin"],
       },
       {
         icon: "/student.png",
@@ -29,13 +30,15 @@ const menuItems = [
         icon: "/parent.png",
         label: "Parents",
         href: "/list/parents",
-        visible: ["admin", "teacher"],
+        visible: ["admin"],
       },
+
+      // ACADEMIC STRUCTURE
       {
         icon: "/subject.png",
         label: "Subjects",
         href: "/list/subjects",
-        visible: ["admin"],
+        visible: ["admin", "teacher"],
       },
       {
         icon: "/class.png",
@@ -47,8 +50,10 @@ const menuItems = [
         icon: "/lesson.png",
         label: "Lessons",
         href: "/list/lessons",
-        visible: ["admin", "teacher"],
+        visible: ["admin", "teacher", "student", "parent"],
       },
+
+      // ACADEMICS
       {
         icon: "/exam.png",
         label: "Exams",
@@ -73,6 +78,8 @@ const menuItems = [
         href: "/list/attendance",
         visible: ["admin", "teacher", "student", "parent"],
       },
+
+      // SCHOOL COMMUNICATION
       {
         icon: "/calendar.png",
         label: "Events",
@@ -93,55 +100,35 @@ const menuItems = [
       },
     ],
   },
-  {
-    title: "OTHER",
-    items: [
-      {
-        icon: "/profile.png",
-        label: "Profile",
-        href: "/profile",
-        visible: ["admin", "teacher", "student", "parent"],
-      },
-      {
-        icon: "/setting.png",
-        label: "Settings",
-        href: "/settings",
-        visible: ["admin", "teacher", "student", "parent"],
-      },
-      {
-        icon: "/logout.png",
-        label: "Logout",
-        href: "/logout",
-        visible: ["admin", "teacher", "student", "parent"],
-      },
-    ],
-  },
 ];
 
 const Menu = async () => {
   const user = await currentUser();
-  const role = user?.publicMetadata.role as string;
+
+  // Safe fallback
+  const role = (user?.publicMetadata.role as string) || "";
 
   return (
     <div className="mt-2 text-sm">
-      {menuItems.map((i) => (
-        <div className="flex flex-col gap-2" key={i.title}>
+      {menuItems.map((menu) => (
+        <div className="flex flex-col gap-2" key={menu.title}>
           <span className="hidden lg:block text-gray-400 font-bold my-4">
-            {i.title}
+            {menu.title}
           </span>
-          {i.items.map((item) => {
-            if (item.visible.includes(role)){
-              return (
+
+          {menu.items.map((item) => {
+            if (!item.visible.includes(role)) return null;
+
+            return (
               <Link
                 href={item.href}
                 key={item.label}
-                className="flex items-center justify-center lg:justify-start gap-4 text-gray-500 py-2 md:px-2 rounded-md hover:bg-(--skool-sky-light) font-semibold"
+                className="flex items-center justify-center lg:justify-start gap-4 text-gray-500 py-2 md:px-2 rounded-md hover:bg-sky-100 font-semibold"
               >
                 <Image src={item.icon} alt="" width={20} height={20} />
                 <span className="hidden lg:block">{item.label}</span>
               </Link>
             );
-            }
           })}
         </div>
       ))}

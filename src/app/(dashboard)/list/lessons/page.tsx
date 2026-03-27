@@ -9,12 +9,14 @@ import {
   Prisma,
   Subject,
   Teacher,
-} from "@/generated/prisma/client";
+} from "@/generated/client";
 import { prisma } from "@/lib/prisma";
 import { ITEMS_PER_PAGE } from "@/lib/settings";
-import { role } from "@/lib/utils";
+import { getAuthData } from "@/lib/utils";
 
 type LessonList = Lesson & { subject: Subject; class: Class; teacher: Teacher };
+
+const { userId, role } = await getAuthData();
 
 const columns = [
   {

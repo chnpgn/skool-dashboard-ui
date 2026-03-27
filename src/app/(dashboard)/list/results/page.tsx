@@ -3,11 +3,10 @@ import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
 import Image from "next/image";
 import FormModal from "@/components/FormModal";
-import { Class, Prisma, Result, Teacher } from "@/generated/prisma/client";
+import { Class, Prisma, Result, Teacher } from "@/generated/client";
 import { prisma } from "@/lib/prisma";
 import { ITEMS_PER_PAGE } from "@/lib/settings";
-import { currentUserId, role } from "@/lib/utils";
-import { ca, de } from "zod/locales";
+import { getAuthData } from "@/lib/utils";
 
 type ResultList = {
   id: number;
@@ -19,6 +18,8 @@ type ResultList = {
   type: string;
   startTime: Date | null;
 };
+
+const { userId: currentUserId, role } = await getAuthData();
 
 const columns = [
   {

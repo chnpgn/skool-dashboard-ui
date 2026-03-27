@@ -5,12 +5,14 @@ import Image from "next/image";
 import FormModal from "@/components/FormModal";
 import { prisma } from "@/lib/prisma";
 import { ITEMS_PER_PAGE } from "@/lib/settings";
-import { Class, Prisma, Event } from "@/generated/prisma/client";
-import { currentUserId, role } from "@/lib/utils";
+import { Class, Prisma, Event } from "@/generated/client";
+import { getAuthData } from "@/lib/utils";
 
 type EventList = Event & {
   class: Class;
 };
+
+const { userId: currentUserId, role } = await getAuthData();
 
 const columns = [
   {

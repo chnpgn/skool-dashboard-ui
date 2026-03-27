@@ -5,7 +5,12 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   images: {
     remotePatterns:[
-      {hostname: 'images.pexels.com'}
+      {hostname: 'images.pexels.com'},
+      {
+        protocol: "https",
+        hostname: "res.cloudinary.com",
+        pathname: "/skoolboy/**",
+      },
     ]
   },
 };

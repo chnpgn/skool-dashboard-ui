@@ -2,11 +2,13 @@ import Pagination from "@/components/Pagination";
 import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
 import Image from "next/image";
-import { Prisma, Class, Teacher } from "@/generated/prisma/client";
+import { Prisma, Class, Teacher } from "@/generated/client";
 import { prisma } from "@/lib/prisma";
 import { ITEMS_PER_PAGE } from "@/lib/settings";
-import { role } from "@/lib/utils";
 import FormContainer from "@/components/forms/FormContainer";
+import { getAuthData } from "@/lib/utils";
+
+const { userId, role } = await getAuthData();
 
 type ClassList = Class & { supervisor: Teacher };
 
@@ -47,8 +49,10 @@ const renderRow = (item: ClassList) => (
   >
     <td className="flex items-center gap-4 p-4">{item.name}</td>
     <td className="hidden md:table-cell">{item.capacity}</td>
-    <td className="hidden md:table-cell">{item.name[0]}</td>
-    <td className="hidden md:table-cell">{item.supervisor.name} {item.supervisor.surname}</td>
+    <td className="hidden md:table-cell">{item.gradeId}</td>
+    <td className="hidden md:table-cell">
+      {item.supervisor.name} {item.supervisor.surname}
+    </td>
     <td>
       <div className="flex items-center gap-2">
         {role === "admin" && (
@@ -83,7 +87,7 @@ const ClassListPage = async ({
             query.supervisorId = value;
             break;
 
-            case "search":
+          case "search":
             query.name = {
               contains: value,
               mode: "insensitive",

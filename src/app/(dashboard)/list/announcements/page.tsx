@@ -3,14 +3,16 @@ import Table from "@/components/Table";
 import TableSearch from "@/components/TableSearch";
 import Image from "next/image";
 import FormModal from "@/components/FormModal";
-import { Announcement, Class, Prisma } from "@/generated/prisma/client";
+import { Announcement, Class, Prisma } from "@/generated/client";
 import { prisma } from "@/lib/prisma";
 import { ITEMS_PER_PAGE } from "@/lib/settings";
-import { currentUserId, role } from "@/lib/utils";
+import { getAuthData } from "@/lib/utils";
 
 type AnnouncementList = Announcement & {
   class: Class;
 };
+
+const { userId: currentUserId, role } = await getAuthData();
 
 const columns = [
   {

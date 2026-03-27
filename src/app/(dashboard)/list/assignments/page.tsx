@@ -11,13 +11,14 @@ import {
   Subject,
   Teacher,
   Class,
-} from "@/generated/prisma/client";
-import { currentUserId, role } from "@/lib/utils";
-import { ca } from "zod/locales";
+} from "@/generated/client";
+import { getAuthData } from "@/lib/utils";
 
 type AssignmentList = Assignment & {
   lesson: { subject: Subject; class: Class; teacher: Teacher };
 };
+
+const { userId, role } = await getAuthData();
 
 const columns = [
   {
@@ -122,14 +123,14 @@ const AssignmentListPage = async ({
       // No additional conditions for admin
       break;
     case "teacher":
-      query.lesson.teacherId = currentUserId!;
+      query.lesson.teacherId = userId!;
       break;
     case "student":
       // For students, we need to find assignments for the classes they are enrolled in
       query.lesson.class = {
         students: {
           some: {
-            id: currentUserId!,
+            id: userId!,
           },
         },
       };
@@ -139,7 +140,7 @@ const AssignmentListPage = async ({
       query.lesson.class = {
         students: {
           some: {
-            parentId: currentUserId!,
+            parentId: userId!,
           },
         },
       };

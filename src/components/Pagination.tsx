@@ -18,7 +18,7 @@ const Pagination = ({ count, page }: { count: number; page: number }) => {
       <button
         disabled={page <= 1}
         onClick={() => changePage(page - 1)}
-        className="py-2 px-4 rounded-md bg-slate-200 text-sm font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+        className="py-2 px-4 rounded-md bg-slate-200 text-sm font-semibold disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
       >
         Prev
       </button>
@@ -26,7 +26,7 @@ const Pagination = ({ count, page }: { count: number; page: number }) => {
         {Array.from({ length: Math.ceil(count / ITEMS_PER_PAGE) }, (_, i) => {
           const pageIndex = i + 1;
           return (
-            <button key={pageIndex} className={`px-2 rounded-sm ${ page === pageIndex ? "bg-(--skool-sky)" : "" }`}
+            <button key={pageIndex} className={`cursor-pointer px-2 rounded-sm ${ page === pageIndex ? "bg-(--skool-sky)" : "" }`}
               onClick={() => changePage(pageIndex)}
             >
               {pageIndex}
@@ -37,7 +37,7 @@ const Pagination = ({ count, page }: { count: number; page: number }) => {
       <button
         disabled={page >= Math.ceil(count / ITEMS_PER_PAGE)}
         onClick={() => changePage(page + 1)}
-        className="py-2 px-4 rounded-md bg-slate-200 text-sm font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+        className="py-2 px-4 rounded-md bg-slate-200 text-sm font-semibold disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer"
       >
         Next
       </button>

@@ -59,7 +59,7 @@ const SubjectForm = ({
       router.refresh();
       setOpen(false);
     }
-  }, [state]);
+  }, [state, router, setOpen, type]);
 
   const { teachers } = relatedData || {};
 
